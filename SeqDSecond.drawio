@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="Jzm_WpLXu-lWKwb0sILE">
+    <mxGraphModel dx="2009" dy="777" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="main :FilmFestival" vertex="1">
+          <mxGeometry height="140" width="120" x="-30" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-2" parent="ZHs_PPNbp2aFJtAq0ZJI-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="30" width="10" x="55" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="1. notify()">
+          <mxGeometry relative="1" x="-0.1489" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="40" y="270" as="sourcePoint" />
+            <mxPoint x="275" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-5" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="mainEvent: FilmShowing" vertex="1">
+          <mxGeometry height="340" width="200" x="180" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-6" parent="ZHs_PPNbp2aFJtAq0ZJI-5" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="200" width="10" x="95" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-23" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=380;height=30;" value="&lt;b&gt;sd&lt;/b&gt;&amp;nbsp;Observer and Subject interaction, demonstrating the loop" vertex="1">
+          <mxGeometry height="500" width="980" x="-80" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-24" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value=": Event" vertex="1">
+          <mxGeometry height="300" width="100" x="530" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-26" parent="ZHs_PPNbp2aFJtAq0ZJI-24" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="110" width="10" x="45" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" value="2. update(notice: NoticeType)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="319.57" />
+            </Array>
+            <mxPoint x="290" y="319.57" as="sourcePoint" />
+            <mxPoint x="580" y="319.5699999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-27" edge="1" parent="1" source="ZHs_PPNbp2aFJtAq0ZJI-26" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" target="ZHs_PPNbp2aFJtAq0ZJI-6" value="3. getEventStatus()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="542.5" y="369.56999999999994" as="sourcePoint" />
+            <mxPoint x="308" y="369.57" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-28" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" value="loop" vertex="1">
+          <mxGeometry height="230" width="590" x="60" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHs_PPNbp2aFJtAq0ZJI-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="[while a dependent has not been notified]" vertex="1">
+          <mxGeometry height="30" width="120" x="130" y="300" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
