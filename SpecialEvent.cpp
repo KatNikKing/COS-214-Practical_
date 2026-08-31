@@ -41,6 +41,9 @@ void SpecialEvent::update(NoticeType notice) {
             std::cout << "Evacuating SpecialEvent '" << name << "'.\n";
             setEventStatus(EventStatus::POSTPONED);
             break;
+        case NoticeType::WEATHER_ALERT:
+            std::cout << "SpecialEvent '" << name << "' received weather alert.\n";
+            break;
         default:
             std::cout << "SpecialEvent '" << name << "' received a notice.\n";
             break;

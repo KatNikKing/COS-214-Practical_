@@ -41,6 +41,9 @@ void FilmShowing::update(NoticeType notice) {
             std::cout << "Evacuating FilmShowing '" << name << "'.\n";
             setEventStatus(EventStatus::POSTPONED);
             break;
+        case NoticeType::WEATHER_ALERT:
+            std::cout << "FilmShowing '" << name << "' received weather alert.\n";
+            break;
         default:
             std::cout << "FilmShowing '" << name << "' received a notice.\n";
             break;
