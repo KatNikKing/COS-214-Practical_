@@ -24,9 +24,8 @@ class EventComponent;
  * if Event declares it -- confirm with your team that this is the
  * intended shape before treating it as final.
  */
-class Event {
+class Event : public EventComponent {
 protected:
-    std::string name;
     std::string description;
     EventStatus eventStatus;
     std::vector<EventComponent*> resources; 
@@ -47,6 +46,7 @@ public:
     void add(EventComponent* component);
     void remove(EventComponent* component);
     EventComponent* get(const std::string& name);
+    virtual void printEventComponent(int level) const = 0;
 
     std::string getName() const;
 };

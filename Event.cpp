@@ -3,8 +3,8 @@
 #include <algorithm>
 
 Event::Event(const std::string& name, const std::string& description)
-    : name(name), description(description),
-      eventStatus(EventStatus::SCHEDULED), currentNotice(NoticeType::OPEN) {}
+    : EventComponent(name), description(description),
+      eventStatus(EventStatus::SCHEDULED), currentNotice(NoticeType::CLOSE) {}
 
 Event::~Event() {
 }
@@ -36,6 +36,10 @@ void Event::notify() {
     for (Event* dependant : dependants) {
         dependant->update(currentNotice);
     }
+
+    for (EventComponent* resource : resources) {
+        resource->update(currentNotice);
+    }
 }
 
 void Event::add(EventComponent* component) {
@@ -55,6 +59,12 @@ EventComponent* Event::get(const std::string& name) {
     for (EventComponent* c : resources) {
         if (c->getName() == name) return c;
     }
+
+    for (EventComponent* c : resources) {
+        EventComponent* result = c->get(name);
+        if (result != nullptr) return result;
+    }
+    
     return nullptr;
 }
 

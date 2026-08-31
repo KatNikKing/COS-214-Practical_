@@ -9,8 +9,9 @@
 class InformationDesk : public EventComponent {
 public:
     explicit InformationDesk(const std::string& name);
-    void printEventComponent() const override;
+    void printEventComponent(int level) const override;
     void update(NoticeType notice) override;
+    EventComponent* get(std::string name); 
 };
 
 #endif

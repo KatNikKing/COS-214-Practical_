@@ -4,6 +4,7 @@
 #include <string>
 #include "ResourceStatus.h"
 #include "NoticeType.h"
+#include "Event.h"
 
 /**
  * @brief Composite-pattern Component. Represents anything that can hold
@@ -32,7 +33,7 @@ public:
     explicit EventComponent(const std::string& name);
     virtual ~EventComponent();
 
-    virtual void printEventComponent() const = 0;
+    virtual void printEventComponent(int level) const = 0;
 
     std::string getName() const;
     int getCapacity() const;
@@ -40,8 +41,8 @@ public:
     void setCapacity(int capacity);
     void setStatus(ResourceStatus status);
     virtual void update(NoticeType notice) = 0;
-    virtual bool add(EventComponent* component);
-    virtual bool remove(EventComponent* component);
+    virtual void add(EventComponent* component);
+    virtual void remove(EventComponent* component);
     virtual EventComponent* get(const std::string& name);
 };
 

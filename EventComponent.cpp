@@ -25,13 +25,9 @@ void EventComponent::setStatus(ResourceStatus status) {
     this->status = status;
 }
 
-bool EventComponent::add(EventComponent* component) {
-    return false;
-}
+void EventComponent::add(EventComponent* component) {}
 
-bool EventComponent::remove(EventComponent* component) {
-    return false;
-}
+void EventComponent::remove(EventComponent* component) {}
 
 EventComponent* EventComponent::get(const std::string& name) {
     return nullptr;

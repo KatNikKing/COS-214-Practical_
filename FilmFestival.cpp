@@ -31,8 +31,7 @@ void FilmFestival::removeEvent(Event* event) {
 
 void FilmFestival::printEvents() const {
     for (Event* e : events) {
-        std::cout << "Event: " << e->getName()
-                   << " (status " << static_cast<int>(e->getEventStatus()) << ")\n";
+        e->printEventComponent(0);
     }
 }
 

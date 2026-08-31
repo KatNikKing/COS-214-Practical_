@@ -18,10 +18,10 @@ public:
     explicit Zone(const std::string& name);
     ~Zone() override;
 
-    bool add(EventComponent* component) override;
-    bool remove(EventComponent* component) override;
+    void add(EventComponent* component) override;
+    void remove(EventComponent* component) override;
     EventComponent* get(const std::string& name) override;
-    void printEventComponent() const override;
+    void printEventComponent(int level) const override;
     void update(NoticeType notice) override;
 };
 

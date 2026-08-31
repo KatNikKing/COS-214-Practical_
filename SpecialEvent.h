@@ -20,6 +20,7 @@ public:
     ~SpecialEvent() override;
 
     void update(NoticeType notice) override;
+    void printEventComponent(int level) const override;
 };
 
 #endif

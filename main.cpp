@@ -16,6 +16,16 @@
 #include "NoticeType.h"
 
 int main() {
+    /*  
+    The main needs to create a FilmFestival
+    with every kind of composite 
+    (FilmShowing, SpecialEvent, Zone, OutdoorVenue, Cinema, Theatre)
+    with every kind of leaf
+    (ScreeningArea, TicketDesk, InformationDesk, FoodArea, SpecialEventArea).
+    Events are top-level composites, so Venues (Zone, OutdoorVenue, Cinema, Theatre) cannot contain them.
+    Send all kinds of notices to each top-level event to show ripple effects. 
+    */
+
     Zone* mainZone = new Zone("Main Zone");                 
     Cinema* cinemaA = new Cinema("Cinema A");                
     ScreeningArea* screen1 = new ScreeningArea("Screen 1");  

@@ -12,14 +12,15 @@
 class FilmShowing : public Event {
 private:
     std::vector<Genre> genre;
-    std::vector<std::string> director;
+    std::vector<std::string> directors;
 
 public:
     FilmShowing(const std::string& name, const std::string& description,
-                std::vector<Genre> genres, std::string director);
+                std::vector<Genre> genres, std::vector<std::string> directors);
     ~FilmShowing() override;
 
     void update(NoticeType notice) override;
+    void printEventComponent(int level) const override;
 };
 
 #endif
