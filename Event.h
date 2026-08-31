@@ -5,6 +5,7 @@
 #include <vector>
 #include "EventStatus.h"
 #include "NoticeType.h"
+#include "EventComponent.h"
 
 class EventComponent;
 

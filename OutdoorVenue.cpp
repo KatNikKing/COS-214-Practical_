@@ -1,4 +1,5 @@
 #include "OutdoorVenue.h"
+#include "Event.h"  // Add this
 #include <algorithm>
 #include <iostream>
 
@@ -79,7 +80,7 @@ void OutdoorVenue::update(NoticeType notice) {
         case NoticeType::WEATHER_ALERT:
             std::cout << "OutdoorVenue '" << name << "' received weather alert. Evacuating.\n";
             setStatus(ResourceStatus::CLOSED);
-            notice = NoticeType::EVACUATE;
+            break;
         default:
             std::cout << "OutdoorVenue '" << name << "' received a notice.\n";
             break;

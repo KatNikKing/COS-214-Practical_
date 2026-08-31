@@ -4,7 +4,6 @@
 #include <string>
 #include "ResourceStatus.h"
 #include "NoticeType.h"
-#include "Event.h"
 
 /**
  * @brief Composite-pattern Component. Represents anything that can hold

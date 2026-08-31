@@ -1,4 +1,5 @@
 #include "Theatre.h"
+#include "Event.h"
 #include <algorithm>
 #include <iostream>
 
