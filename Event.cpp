@@ -33,13 +33,13 @@ void Event::detach(Event* event) {
 }
 
 void Event::notify() {
-    for (Event* dependant : dependants) {
-        dependant->update(currentNotice);
-    }
-
     for (EventComponent* resource : resources) {
         resource->update(currentNotice);
     }
+    
+    for (Event* dependant : dependants) {
+        dependant->update(currentNotice);
+    }    
 }
 
 void Event::add(EventComponent* component) {

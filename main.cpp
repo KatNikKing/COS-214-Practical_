@@ -15,15 +15,21 @@
 #include "SpecialEventType.h"
 #include "NoticeType.h"
 
-int main() {
+int main() { 
     /*  
-    The main needs to create a FilmFestival
-    with every kind of composite 
+    The main needs to create every kind of composite 
     (FilmShowing, SpecialEvent, Zone, OutdoorVenue, Cinema, Theatre)
     with every kind of leaf
     (ScreeningArea, TicketDesk, InformationDesk, FoodArea, SpecialEventArea).
     Events are top-level composites, so Venues (Zone, OutdoorVenue, Cinema, Theatre) cannot contain them.
-    Send all kinds of notices to each top-level event to show ripple effects. 
+    Build the trees first, and call building functions like add and remove. 
+    Add all events to FilmFestival.
+    Send all kinds of notices to each top-level event through FilmFestival to show ripple effects. 
+    Calling printEvents() in FilmFestival calls all printEventComponent() in the tree.
+    You can also simply call getComponent() in FilmFestival to search the whole tree. 
+    Remember to attach some events to each other as well.
+    If necessary for coverage, you can add trivial uses of unused functions 
+    like some of the getters and setters in EventComponent.
     */
 
     Zone* mainZone = new Zone("Main Zone");                 
@@ -49,7 +55,7 @@ int main() {
     FilmFestival festival;
     FilmShowing* showing = new FilmShowing(
         "Opening Night Screening", "Festival opener",
-        {Genre::DRAMA}, "A. Director");
+        {Genre::DRAMA}, {"A. Director"});
     SpecialEvent* panel = new SpecialEvent(
         "Director Q&A", "Post-screening panel",
         SpecialEventType::DIRECTOR_PANEL, "A. Director");
@@ -62,7 +68,7 @@ int main() {
     festival.addEvent(panel);
 
     std::cout << "--- Resources ---\n";
-    mainZone->printEventComponent();
+    mainZone->printEventComponent(0);
 
     std::cout << "\n--- Sending WEATHER_ALERT through the resource tree ---\n";
     mainZone->update(NoticeType::WEATHER_ALERT);

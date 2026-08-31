@@ -27,6 +27,8 @@ public:
      */
     void sendNotice(Event* event, NoticeType notice);
 
+    EventComponent* getComponent(std::string name);
+
     /**
      * @brief Register a new event with the festival.
      * @param event Event to add. FilmFestival takes ownership.

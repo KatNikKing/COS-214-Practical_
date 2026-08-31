@@ -1,4 +1,5 @@
 #include "FilmFestival.h"
+#include "EventComponent.h"
 #include <algorithm>
 #include <iostream>
 
@@ -29,6 +30,16 @@ void FilmFestival::removeEvent(Event* event) {
     events.erase(it);
 }
 
+EventComponent* FilmFestival::getComponent(std::string name) {
+    for (Event* e : events) {
+        if (e->getName() == name) return e;
+    }
+
+    for (Event* e : events) {
+        return e->get(name);
+    }
+}
+
 void FilmFestival::printEvents() const {
     for (Event* e : events) {
         e->printEventComponent(0);
@@ -37,6 +48,6 @@ void FilmFestival::printEvents() const {
 
 void FilmFestival::start() {
     for (Event* e : events) {
-        e->setEventStatus(EventStatus::IN_PROGRESS);
+        sendNotice(e, NoticeType::OPEN);
     }
 }
