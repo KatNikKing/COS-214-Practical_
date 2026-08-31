@@ -19,7 +19,8 @@ public:
     bool add(EventComponent* component) override;
     bool remove(EventComponent* component) override;
     EventComponent* get(const std::string& name) override;
-    void printResources() const override;
+    void printEventComponent() const override;
+    void update(NoticeType notice) override;
 };
 
-#endif // CINEMA_H
+#endif 

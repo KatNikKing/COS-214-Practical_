@@ -19,8 +19,7 @@ public:
                  SpecialEventType type, const std::string& host);
     ~SpecialEvent() override;
 
-    void start_event() override;
-    void update(DateTime start, DateTime end) override;
+    void update(NoticeType notice) override;
 };
 
-#endif // SPECIALEVENT_H
+#endif

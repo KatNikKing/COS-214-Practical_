@@ -31,9 +31,19 @@ EventComponent* Cinema::get(const std::string& name) {
     return nullptr;
 }
 
-void Cinema::printResources() const {
+void Cinema::printEventComponent() const {
     std::cout << "Cinema: " << name << "\n";
     for (EventComponent* c : components) {
-        c->printResources();
+        c->printEventComponent();
+    }
+}
+
+void Cinema::update(NoticeType notice) {
+    if (notice == NoticeType::EVACUATE) {
+        setStatus(ResourceStatus::CLOSED);
+        std::cout << "Cinema " << name << " closing for evacuation.\n";
+    }
+    for (EventComponent* c : components) {
+        c->update(notice);
     }
 }

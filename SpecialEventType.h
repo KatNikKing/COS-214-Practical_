@@ -11,4 +11,4 @@ enum class SpecialEventType {
     WORKSHOP
 };
 
-#endif // SPECIALEVENTTYPE_H
+#endif

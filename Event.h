@@ -3,48 +3,52 @@
 
 #include <string>
 #include <vector>
-#include "DateTime.h"
+#include "EventStatus.h"
+#include "NoticeType.h"
 
 class EventComponent;
 
 /**
  * @brief Abstract festival event. Doubles as both Subject and Observer:
  * an Event can notify() its dependants (other Events observing it, e.g.
- * a panel that depends on a screening's schedule) and can itself be
- * updated when an Event it depends on changes.
+ * a panel that depends on a screening) and is itself updated via
+ * update(NoticeType) when a notice is sent to it (e.g. by
+ * FilmFestival::sendNotice()).
  *
  * Observer registration (dependants) is a non-owning relationship,
  * distinct from resource ownership (resources).
+ *
+ * NOTE: update(NoticeType) and the stored `currentNotice` are not shown
+ * explicitly on the Event box in the latest class diagram, but
+ * FilmShowing/SpecialEvent both override update(), which only compiles
+ * if Event declares it -- confirm with your team that this is the
+ * intended shape before treating it as final.
  */
 class Event {
 protected:
     std::string name;
     std::string description;
-    DateTime start;
-    DateTime end;
-    bool scheduled;
-    std::vector<EventComponent*> resources;
-    std::vector<Event*> dependants; // non-owning: registered observers
+    EventStatus eventStatus;
+    std::vector<EventComponent*> resources; 
+    std::vector<Event*> dependants;         
+    NoticeType currentNotice;               
 
 public:
     Event(const std::string& name, const std::string& description);
     virtual ~Event();
 
+    void setEventStatus(EventStatus status);
+    EventStatus getEventStatus() const;
+
     void attach(Event* event);
     void detach(Event* event);
     void notify();
-
-    // Pull/push hook: dependants are told what changed. Concrete Events
-    // decide how to react (e.g. reschedule themselves).
-    virtual void update(DateTime start, DateTime end);
-
-    void setDateTime(DateTime start, DateTime end);
-    void setResources(std::vector<EventComponent*> resources);
-    bool isScheduled() const;
+    virtual void update(NoticeType notice) = 0;
+    void add(EventComponent* component);
+    void remove(EventComponent* component);
+    EventComponent* get(const std::string& name);
 
     std::string getName() const;
-
-    virtual void start_event() = 0; // named to avoid clashing with `start` member
 };
 
-#endif // EVENT_H
+#endif 

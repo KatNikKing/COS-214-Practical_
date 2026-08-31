@@ -31,9 +31,19 @@ EventComponent* Theatre::get(const std::string& name) {
     return nullptr;
 }
 
-void Theatre::printResources() const {
+void Theatre::printEventComponent() const {
     std::cout << "Theatre: " << name << "\n";
     for (EventComponent* c : components) {
-        c->printResources();
+        c->printEventComponent();
+    }
+}
+
+void Theatre::update(NoticeType notice) {
+    if (notice == NoticeType::EVACUATE) {
+        setStatus(ResourceStatus::CLOSED);
+        std::cout << "Theatre " << name << " closing for evacuation.\n";
+    }
+    for (EventComponent* c : components) {
+        c->update(notice);
     }
 }

@@ -31,9 +31,15 @@ EventComponent* Zone::get(const std::string& name) {
     return nullptr;
 }
 
-void Zone::printResources() const {
+void Zone::printEventComponent() const {
     std::cout << "Zone: " << name << "\n";
     for (EventComponent* c : components) {
-        c->printResources();
+        c->printEventComponent();
+    }
+}
+
+void Zone::update(NoticeType notice) {
+    for (EventComponent* c : components) {
+        c->update(notice);
     }
 }

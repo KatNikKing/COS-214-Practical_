@@ -10,7 +10,8 @@
 class SpecialEventArea : public EventComponent {
 public:
     explicit SpecialEventArea(const std::string& name);
-    void printResources() const override;
+    void printEventComponent() const override;
+    void update(NoticeType notice) override;
 };
 
-#endif // SPECIALEVENTAREA_H
+#endif

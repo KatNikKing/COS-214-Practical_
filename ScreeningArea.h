@@ -9,7 +9,8 @@
 class ScreeningArea : public EventComponent {
 public:
     explicit ScreeningArea(const std::string& name);
-    void printResources() const override;
+    void printEventComponent() const override;
+    void update(NoticeType notice) override;
 };
 
-#endif // SCREENINGAREA_H
+#endif

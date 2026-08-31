@@ -31,9 +31,19 @@ EventComponent* OutdoorVenue::get(const std::string& name) {
     return nullptr;
 }
 
-void OutdoorVenue::printResources() const {
+void OutdoorVenue::printEventComponent() const {
     std::cout << "OutdoorVenue: " << name << "\n";
     for (EventComponent* c : components) {
-        c->printResources();
+        c->printEventComponent();
+    }
+}
+
+void OutdoorVenue::update(NoticeType notice) {
+    if (notice == NoticeType::WEATHER_ALERT || notice == NoticeType::EVACUATE) {
+        setStatus(ResourceStatus::SUSPENDED);
+        std::cout << "OutdoorVenue " << name << " suspended due to notice.\n";
+    }
+    for (EventComponent* c : components) {
+        c->update(notice);
     }
 }

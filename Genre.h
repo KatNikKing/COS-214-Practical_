@@ -15,4 +15,4 @@ enum class Genre {
     THRILLER
 };
 
-#endif // GENRE_H
+#endif

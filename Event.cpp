@@ -3,18 +3,24 @@
 #include <algorithm>
 
 Event::Event(const std::string& name, const std::string& description)
-    : name(name), description(description), scheduled(false) {}
+    : name(name), description(description),
+      eventStatus(EventStatus::SCHEDULED), currentNotice(NoticeType::OPEN) {}
 
 Event::~Event() {
-    // Non-owning: do not delete resources or dependants here.
-    // TODO: decide/implement safe detach-on-destruction policy so that
-    // dependants don't hold dangling pointers to this Event.
+}
+
+void Event::setEventStatus(EventStatus status) {
+    this->eventStatus = status;
+}
+
+EventStatus Event::getEventStatus() const {
+    return eventStatus;
 }
 
 void Event::attach(Event* event) {
     if (event == nullptr) return;
     if (std::find(dependants.begin(), dependants.end(), event) != dependants.end()) {
-        return; // TODO: confirm duplicate-registration policy
+        return; 
     }
     dependants.push_back(event);
 }
@@ -24,30 +30,32 @@ void Event::detach(Event* event) {
     if (it != dependants.end()) {
         dependants.erase(it);
     }
-    // TODO: decide policy for detach() called with an unregistered observer
 }
 
 void Event::notify() {
     for (Event* dependant : dependants) {
-        dependant->update(start, end);
+        dependant->update(currentNotice);
     }
 }
 
-void Event::update(DateTime start, DateTime end) {
-    // Default: do nothing. Concrete Events override to react.
+void Event::add(EventComponent* component) {
+    if (component == nullptr) return;
+    if (std::find(resources.begin(), resources.end(), component) != resources.end()) return;
+    resources.push_back(component);
 }
 
-void Event::setDateTime(DateTime start, DateTime end) {
-    this->start = start;
-    this->end = end;
+void Event::remove(EventComponent* component) {
+    auto it = std::find(resources.begin(), resources.end(), component);
+    if (it != resources.end()) {
+        resources.erase(it);
+    }
 }
 
-void Event::setResources(std::vector<EventComponent*> resources) {
-    this->resources = resources;
-}
-
-bool Event::isScheduled() const {
-    return scheduled;
+EventComponent* Event::get(const std::string& name) {
+    for (EventComponent* c : resources) {
+        if (c->getName() == name) return c;
+    }
+    return nullptr;
 }
 
 std::string Event::getName() const {

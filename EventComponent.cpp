@@ -1,7 +1,7 @@
 #include "EventComponent.h"
 
 EventComponent::EventComponent(const std::string& name)
-    : name(name), capacity(0), status(false) {}
+    : name(name), capacity(0), status(ResourceStatus::CLOSED) {}
 
 EventComponent::~EventComponent() {}
 
@@ -13,7 +13,7 @@ int EventComponent::getCapacity() const {
     return capacity;
 }
 
-bool EventComponent::getStatus() const {
+ResourceStatus EventComponent::getStatus() const {
     return status;
 }
 
@@ -21,11 +21,10 @@ void EventComponent::setCapacity(int capacity) {
     this->capacity = capacity;
 }
 
-void EventComponent::setStatus(bool status) {
+void EventComponent::setStatus(ResourceStatus status) {
     this->status = status;
 }
 
-// Default Leaf behaviour: leaves don't have children.
 bool EventComponent::add(EventComponent* component) {
     return false;
 }

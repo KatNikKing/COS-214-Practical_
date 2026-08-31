@@ -7,12 +7,20 @@ SpecialEvent::SpecialEvent(const std::string& name, const std::string& descripti
 
 SpecialEvent::~SpecialEvent() {}
 
-void SpecialEvent::start_event() {
-    std::cout << "SpecialEvent '" << name << "' is starting.\n";
+void SpecialEvent::update(NoticeType notice) {
+    switch (notice) {
+        case NoticeType::CANCEL:
+            std::cout << "SpecialEvent '" << name << "' cancelled.\n";
+            setEventStatus(EventStatus::CANCELLED);
+            break;
+        case NoticeType::SCHEDULE_CHANGE:
+            std::cout << "SpecialEvent '" << name << "' rescheduled.\n";
+            setEventStatus(EventStatus::RESCHEDULED);
+            break;
+        default:
+            std::cout << "SpecialEvent '" << name << "' received a notice.\n";
+            break;
+    }
+    currentNotice = notice;
     notify();
-}
-
-void SpecialEvent::update(DateTime start, DateTime end) {
-    // TODO: react to a dependency changing, e.g. reschedule this event
-    setDateTime(start, end);
 }

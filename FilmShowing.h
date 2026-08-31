@@ -19,8 +19,7 @@ public:
                 std::vector<Genre> genres, std::string director);
     ~FilmShowing() override;
 
-    void start_event() override;
-    void update(DateTime start, DateTime end) override;
+    void update(NoticeType notice) override;
 };
 
-#endif // FILMSHOWING_H
+#endif

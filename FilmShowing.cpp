@@ -9,12 +9,28 @@ FilmShowing::FilmShowing(const std::string& name, const std::string& description
 
 FilmShowing::~FilmShowing() {}
 
-void FilmShowing::start_event() {
-    std::cout << "FilmShowing '" << name << "' is starting.\n";
+void FilmShowing::update(NoticeType notice) {
+    switch (notice) {
+        case NoticeType::PAUSE:
+            std::cout << "FilmShowing '" << name << "' pausing screening.\n";
+            setEventStatus(EventStatus::PAUSED);
+            break;
+        case NoticeType::RESUME:
+            std::cout << "FilmShowing '" << name << "' resuming screening.\n";
+            setEventStatus(EventStatus::IN_PROGRESS);
+            break;
+        case NoticeType::CANCEL:
+            std::cout << "FilmShowing '" << name << "' cancelled.\n";
+            setEventStatus(EventStatus::CANCELLED);
+            break;
+        case NoticeType::SCHEDULE_CHANGE:
+            std::cout << "FilmShowing '" << name << "' rescheduled.\n";
+            setEventStatus(EventStatus::RESCHEDULED);
+            break;
+        default:
+            std::cout << "FilmShowing '" << name << "' received a notice.\n";
+            break;
+    }
+    currentNotice = notice;
     notify();
-}
-
-void FilmShowing::update(DateTime start, DateTime end) {
-    // TODO: react to a dependency changing, e.g. shift this showing's slot
-    setDateTime(start, end);
 }
