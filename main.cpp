@@ -200,5 +200,7 @@ int main() {
     delete mainZone;
     std::cout << "Destroying festival (will delete remaining events)...\n";
 
+    delete screen2;
+
     return 0;
 }

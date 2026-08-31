@@ -7,6 +7,8 @@ Event::Event(const std::string& name, const std::string& description)
       eventStatus(EventStatus::SCHEDULED), currentNotice(NoticeType::CLOSE) {}
 
 Event::~Event() {
+    for (EventComponent* resource : resources)
+        delete resource;
 }
 
 void Event::setEventStatus(EventStatus status) {

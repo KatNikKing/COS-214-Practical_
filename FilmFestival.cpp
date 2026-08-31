@@ -38,6 +38,8 @@ EventComponent* FilmFestival::getComponent(std::string name) {
     for (Event* e : events) {
         return e->get(name);
     }
+
+    return nullptr;
 }
 
 void FilmFestival::printEvents() const {
